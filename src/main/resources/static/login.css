@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.v87_2207 {
+  width: 100%;
+  min-height: 100vh; /* Permite que a altura se ajuste */
+  background: rgba(255, 255, 255, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.corFundo {
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(243, 243, 250, 1);
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+
+.logo {
+  width: 118px;
+  height: 103px;
+  background: url("/img/logo.png") no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 40px;
+  left: 80px;
+}
+
+.acessar {
+  width: 178px;
+  color: rgba(194, 23, 18, 1);
+  position: absolute;
+  top: 270px;
+  left: 68px;
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  text-align: left;
+}
+
+.fundo {
+  width: 100%;
+  min-height: 100vh;
+  background: url("/img/fundoLogin.png") no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 7px;
+  left: 0;
+}
+
+.form-container {
+  position: absolute;
+  top: 320px;
+  left: 56px;
+  width: 500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #c21712;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #a51210;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #c21712;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
