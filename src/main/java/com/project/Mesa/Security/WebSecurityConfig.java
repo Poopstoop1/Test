@@ -47,7 +47,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authz) -> authz
 				// Rotas acessíveis apenas pelo admin
-				.requestMatchers("/tela.css","/img/**").permitAll()
+				.requestMatchers("/tela.css","/img/**","/paginas/login").permitAll()
 				.requestMatchers("/cadastrousuarios", "/salvarusuarios","/listarusuarios","/editarusuarios/{idusuario}").hasRole("MANAGER")
 				
 				// Qualquer outra rota requer autenticação
