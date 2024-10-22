@@ -20,4 +20,8 @@ COPY target/Mesa-0.0.1-SNAPSHOT.jar /app/Mesa.jar
 EXPOSE 8080
 
 # Comando para rodar a aplicação
+<<<<<<< HEAD
 ENTRYPOINT ["java", "-jar", "/app/Mesa.jar"]
+=======
+ENTRYPOINT ["java", "-jar", "/app/Mesa.jar"]
+>>>>>>> 83ef0587fdfe3fda46f21e426906eaa4f92104f2
