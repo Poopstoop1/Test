@@ -1,6 +1,15 @@
 # Use uma imagem base com Java
 FROM openjdk:21-jdk-slim
 
+# Instalar o Maven no container
+RUN apt-get update && apt-get install -y maven
+
+# Copie o código fonte para o container
+COPY . /app
+
+# Compile o projeto com Maven
+RUN mvn clean package -DskipTests
+
 # Defina o diretório de trabalho dentro do container
 WORKDIR /app
 
