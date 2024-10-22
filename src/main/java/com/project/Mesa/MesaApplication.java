@@ -18,6 +18,8 @@ import com.project.Mesa.Model.Users;
 import com.project.Mesa.Repository.SequenceService;
 import com.project.Mesa.Repository.UserRepository;
 
+
+
 @SpringBootApplication
 @EntityScan(basePackages = "com.project.Mesa.Model")
 @ComponentScan(basePackages = {"com.*"})
@@ -27,11 +29,7 @@ import com.project.Mesa.Repository.UserRepository;
 @RestController
 @EnableAutoConfiguration
 public class MesaApplication {
-	@Autowired
-	 private UserRepository usuario;
-	 
-	 @Autowired
-		private SequenceService sequenceService;
+	
 	 
 	public static void main(String[] args) {
 		SpringApplication.run(MesaApplication.class, args);
@@ -61,6 +59,11 @@ public class MesaApplication {
 			}
 		}
 	 
+	 @Autowired
+	 private UserRepository usuario;
+	 
+	 @Autowired
+	 private SequenceService sequenceService;
 	 
 	 private void sequenciaInicial() {
 		 
