@@ -1,4 +1,3 @@
-# Use uma imagem base com Java
 FROM openjdk:21-jdk-slim
 
 # Instale o Maven
@@ -14,7 +13,7 @@ COPY . /app
 RUN mvn clean package -DskipTests
 
 # Copie o arquivo jar gerado para o container
-# RUN para executar um comando que move o jar diretamente
+# Note que você pode usar a instrução RUN para executar um comando que move o jar diretamente
 RUN cp target/Mesa-0.0.1-SNAPSHOT.jar Mesa.jar
 
 # Exponha a porta que a aplicação vai usar
