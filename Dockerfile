@@ -14,7 +14,7 @@ WORKDIR /app
 RUN mvn clean package -DskipTests
 
 # Copie o arquivo jar gerado para o container
-COPY target/Mesa-0.0.1-SNAPSHOT.jar /app/Mesa.jar
+COPY target/Mesa-0.0.1-SNAPSHOT.jar Mesa.jar
 
 # Exponha a porta que a aplicação vai usar
 EXPOSE 8080
