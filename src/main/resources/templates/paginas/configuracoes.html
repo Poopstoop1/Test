@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <link rel="stylesheet" th:href="@{configuracoes.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="sidebar locked" th:classappend="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'manager' : ''}">
+        <div class="sidebar-controls">
+            <i class="bx bx-lock-alt" id="lock-icon" title="Desbloquear Sidebar"></i>
+            <i class='bx bx-menu' id="sidebar-close"></i>
+            <i class='bx bx-chevron-right' id="sidebar-closed-icon"></i>
+        </div>
+
+        <div class="logo_items flex">
+            <div class="user-info">
+                <img th:src="@{/img/usu.png}" alt="Ícone usuário" id="user-icon">
+                <span class="logo_name" th:text="${message}"></span>
+            </div>
+
+
+        </div>
+        <div class="menu_container">
+            <ul class="menu_item" th:classappend="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'manager' : ''}">
+                <li class="item"><a href="https://test-project-7296.up.railway.app/"><span class="material-symbols-outlined">dashboard</span><span th:text="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'Dashboard Global' : 'Dashboard'}">Dashboard</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/campanhas"><span class="material-symbols-outlined">campaign</span><span th:text="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'Gestão de Campanhas' : 'Campanhas'}">Gestão de Campanhas</span></a></li>
+                <li class="item" th:if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}"><a href="https://test-project-7296.up.railway.app/usuarios"><span class="material-symbols-outlined">groups</span><span>Gestão de Usuários</span></a></li>
+                <li class="item" th:if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}"><a href="https://test-project-7296.up.railway.app/filial"><span class="material-symbols-outlined">library_add</span><span>Gestão de Filiais</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/configuracoes"><span class="material-symbols-outlined">settings</span><span th:text="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'Configurações Gerais' : 'Configurações'}">Configurações</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/logout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <button class="button-info">Editar informações</button>
+        <div class="info-section">
+            <h1 class="title-info">Configurações</h1>
+            <p class="info-filial">Informações da Filial</p>
+        </div>
+    </div>
+    <div class="square"></div>
+
+    <script th:src="@{/js/configuracoes.js}"></script>
+</body>
+
+</html>

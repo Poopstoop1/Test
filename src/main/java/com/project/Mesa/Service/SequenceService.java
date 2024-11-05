@@ -1,4 +1,4 @@
-package com.project.Mesa.Repository;
+package com.project.Mesa.Service;
 
 import org.springframework.stereotype.Service;
 

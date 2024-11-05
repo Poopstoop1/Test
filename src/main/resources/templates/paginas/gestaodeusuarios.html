@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Titulo alterado-->
+    <title>Gestão de Usuários</title>
+    <!--Corrigi o endereço dos arquivos-->
+    <link rel="stylesheet" th:href="@{/gestaodeusuarios.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="sidebar locked">
+        <div class="sidebar-controls">
+            <i class="bx bx-lock-alt" id="lock-icon" title="Desbloquear Sidebar"></i>
+            <i class='bx bx-menu' id="sidebar-close"></i>
+            <i class='bx bx-chevron-right' id="sidebar-closed-icon"></i>
+        </div>
+
+        <div class="logo_items flex">
+            <div class="user-info">
+                <!--Corrigi o endereço dos arquivos-->
+                <img th:src="@{/img/usu.png}" alt="Ícone usuário" id="user-icon">
+                <span class="logo_name" th:text="${message}"></span>
+            </div>
+
+
+        </div>
+        <div class="menu_container">
+            <ul class="menu_item">
+                <!--Acrescentei 1 item selecionavel no menu'Gestao de filiais' e mudei 2 icones, e deixei os icones redirecionaveis-->
+                <li class="item"><a href="https://test-project-7296.up.railway.app/"><span class="material-symbols-outlined">dashboard</span><span>Dashboard Global</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/campanhas"><span class="material-symbols-outlined">campaign</span><span>Gestão de Campanhas</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/usuarios"><span class="material-symbols-outlined">groups</span><span>Gestão de Usuários</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/filial"><span class="material-symbols-outlined">library_add</span><span>Gestão de Filiais</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/configuracoes"><span class="material-symbols-outlined">settings</span><span>Configurações Gerais</span></a></li>
+                <li class="item"><a href="https://test-project-7296.up.railway.app/logout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <!--Pendencia: renomear classes no html e css e talvez no js-->
+        <button id="openPopup" class="button-campanha">Adicionar Usuários</button>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span id="closePopup" class="close">&times;</span>
+
+                <form action="/salvarusuarios" method="post" th:object="${usuarioobj}">
+                    <label>Login</label>
+                    <input id="inp" name="login" th:field="*{login}" required>
+                    <label>Senha</label>
+                    <input id="inp" type="password" name="password" th:field="*{password}" required>
+                    <label>Cargo</label>
+                    <input id="inp" name="cargo" th:field="*{cargo}" required>
+
+                    <label>CNPJ Empresa</label>
+                    <input id="inp" name="empresa" th:field="*{empresa}" required>
+                    <input type="submit" value="Salvar">
+                </form>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <h1 class="title-upload">Usuários</h1>
+            <p class="last-upload">Lista de Usuarios:</p>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Login</th>
+                        <th>Senha</th>
+                        <th>Cargo</th>
+                        <th>Empresa CNPJ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${usuarios}">
+                        <td th:text="${user.login}"></td>
+                        <td th:text="${user.password}"></td>
+                        <td th:text="${user.cargo}"></td>
+                        <td th:text="${user.cnpjEmpresa}"></td>
+                        <td>
+                            <a href="javascript:void(0);" th:attr="data-id=${user.id}, 
+            				 data-login=${user.login}, 
+            				 data-password=${user.password},
+            				 data-cargo=${user.cargo},
+            				 data-empresa=${user.cnpjEmpresa}" onclick="openEditPopup(this)">Editar</a>
+                            <a th:href="@{/removerusuario/{idusuario}(idusuario=${user.id})}">Excluir</a>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <div id="popupEdit" class="popup">
+                <div class="popup-content">
+                    <span id="closePopupEdit" class="close">&times;</span>
+
+                    <!-- Formulário para editar filial -->
+                    <form action="/editarusuarios" method="post">
+                        <label for="editId">ID</label>
+                        <input type="text" id="editId" name="id" readonly>
+                        <label for="editLogin">Login</label>
+                        <input type="text" id="editLogin" name="login" required>
+                        <label for="editPassword">Senha</label>
+                        <input type="text" id="editPassword" name="password" required>
+                        <label for="editCargo">Cargo</label>
+                        <input type="text" id="editCargo" name="cargo" required>
+                        <label for="editEmpresa">CNPJ Empresa</label>
+                        <input type="text" id="editEmpresa" name="empresa" required>
+                        <input type="submit" value="Salvar">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--Corrigi o endereço dos arquivos-->
+    <script th:src="@{/js/gestaodeusuarios.js}"></script>
+</body>
+
+</html>

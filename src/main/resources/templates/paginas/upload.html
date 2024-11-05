@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de planinhas</title>
+    <link rel="stylesheet" th:href="@{upload.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="sidebar locked">
+        <div class="sidebar-controls">
+        <i class="bx bx-lock-alt" id="lock-icon" title="Desbloquear Sidebar"></i>
+        <i class='bx bx-menu' id="sidebar-close"></i>
+        <i class='bx bx-chevron-right' id="sidebar-closed-icon"></i>
+        </div>
+
+        <div class="logo_items flex">
+            <div class="user-info">
+            <img th:src="@{/img/usu.png}" alt="Ícone usuário" id="user-icon">
+            <span class="logo_name" th:text="${message}"></span>
+            </div>
+
+           
+        </div>
+        <div class="menu_container">
+            <ul class="menu_item">
+                <li class="item"><a href="http://localhost:8081/"><span class="material-symbols-outlined">dashboard</span><span>Dashboard Global</span></a></li>
+                <li class="item"><a href="http://localhost:8081/campanhas"><span class="material-symbols-outlined">campaign</span><span>Gestão de Campanhas</span></a></li>
+                <li class="item"><a href="http://localhost:8081/usuarios"><span class="material-symbols-outlined">groups</span><span>Gestão de Usuários</span></a></li>
+                <li class="item"><a href="http://localhost:8081/filial"><span class="material-symbols-outlined">library_add</span><span>Gestão de Filiais</span></a></li>
+                <li class="item"><a href="http://localhost:8081/upload"><span class="material-symbols-outlined">upload</span><span>Upload de Planilhas</span></a></li>
+                <li class="item"><a href="http://localhost:8081/configuracoes"><span class="material-symbols-outlined">settings</span><span>Configurações Gerais</span></a></li>
+                <li class="item"><a href="http://localhost:8081/logout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <button class="button-campanha">Adicionar planinha</button>
+        <div class="upload-section">
+            <h1 class="title-upload">Upload de planinhas</h1>
+            <p class="last-upload">Último upload:</p>
+            <p class="history-upload">Histórico de uploads</p>
+        </div>
+    </div>
+    
+    <script th:src="@{/js/upload.js}"></script>
+</body>
+</html>
