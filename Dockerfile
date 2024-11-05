@@ -20,4 +20,4 @@ RUN cp target/Mesa-0.0.1-SNAPSHOT.jar Mesa.jar
 EXPOSE 8080
 
 # Comando para rodar a aplicação
-ENTRYPOINT ["java", "-jar", "Mesa.jar","--debug"]
+ENTRYPOINT ["java", "-jar", "Mesa.jar"]
