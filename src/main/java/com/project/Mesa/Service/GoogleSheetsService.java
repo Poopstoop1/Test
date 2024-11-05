@@ -299,9 +299,8 @@ public class GoogleSheetsService {
     }
 
   public Sheets getSheetsService() throws IOException, GeneralSecurityException {
-    // Carregar o arquivo de credenciais diretamente
-    InputStream credentialsStream = getClass().getResourceAsStream("/credentials.json");
-    GoogleCredentials credentials = GoogleCredentials.fromStream(credentialsStream)
+    // Carregar as credenciais do Google a partir da variável de ambiente
+    GoogleCredentials credentials = GoogleCredentials.fromStream(new ByteArrayInputStream(System.getenv("GOOGLE_CREDENTIALS").getBytes()))
             .createScoped(List.of(SheetsScopes.SPREADSHEETS));
     
     // Conectar-se à API do Google Sheets
