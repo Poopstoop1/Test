@@ -298,19 +298,14 @@ public class GoogleSheetsService {
         }
     }
 
-    private Sheets getSheetsService() throws IOException, GeneralSecurityException {
-    // Carregar o JSON a partir da variável de ambiente
-    String googleCredentialsJson = System.getenv("GOOGLE_CREDENTIALS");
-
-    if (googleCredentialsJson == null) {
-        throw new IOException("A variável de ambiente GOOGLE_CREDENTIALS não foi encontrada.");
-    }
-
-    // Criar as credenciais do Google a partir da string JSON da variável de ambiente
-    GoogleCredentials credentials = GoogleCredentials.fromStream(new ByteArrayInputStream(googleCredentialsJson.getBytes()))
-            .createScoped(List.of(SheetsScopes.SPREADSHEETS_READONLY));
-
-    return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(), JSON_FACTORY, new HttpCredentialsAdapter(credentials))
+   public Sheets getSheetsService() throws IOException, GeneralSecurityException {
+    // Carregar as credenciais do Google a partir da variável de ambiente
+    GoogleCredentials credentials = GoogleCredentials.fromStream(new ByteArrayInputStream(System.getenv("GOOGLE_CREDENTIALS").getBytes()))
+            .createScoped(List.of(SheetsScopes.SPREADSHEETS));
+    
+    // Conectar-se à API do Google Sheets
+    HttpCredentialsAdapter credentialsAdapter = new HttpCredentialsAdapter(credentials);
+    return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(), JSON_FACTORY, credentialsAdapter)
             .setApplicationName(APPLICATION_NAME)
             .build();
 }
