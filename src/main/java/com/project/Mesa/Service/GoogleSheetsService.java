@@ -17,6 +17,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
