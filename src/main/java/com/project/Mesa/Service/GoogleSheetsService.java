@@ -299,16 +299,11 @@ public class GoogleSheetsService {
         }
     }
 
-  public Sheets getSheetsService() throws IOException, GeneralSecurityException {
-    // Carregar o arquivo de credenciais diretamente
-    InputStream credentialsStream = getClass().getResourceAsStream("/credentials.json");
-    GoogleCredentials credentials = GoogleCredentials.fromStream(credentialsStream)
-            .createScoped(List.of(SheetsScopes.SPREADSHEETS));
-    
-    // Conectar-se à API do Google Sheets
-    HttpCredentialsAdapter credentialsAdapter = new HttpCredentialsAdapter(credentials);
-    return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(), JSON_FACTORY, credentialsAdapter)
-            .setApplicationName(APPLICATION_NAME)
-            .build();
-}
+  private Sheets getSheetsService() throws IOException, GeneralSecurityException {
+        GoogleCredentials credentials = GoogleCredentials.fromStream(getClass().getClassLoader().getResourceAsStream("credentials.json"))
+                .createScoped(List.of(SheetsScopes.SPREADSHEETS_READONLY));
+        return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(), JSON_FACTORY, new HttpCredentialsAdapter(credentials))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+    }
 }
