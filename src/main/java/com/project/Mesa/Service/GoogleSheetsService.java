@@ -300,6 +300,7 @@ public class GoogleSheetsService {
 
   public Sheets getSheetsService() throws IOException, GeneralSecurityException {
     // Carregar as credenciais do Google a partir da variável de ambiente
+	  System.out.println(System.getenv("GOOGLE_CREDENTIALS"))
     GoogleCredentials credentials = GoogleCredentials.fromStream(new ByteArrayInputStream(System.getenv("GOOGLE_CREDENTIALS").getBytes()))
             .createScoped(List.of(SheetsScopes.SPREADSHEETS));
     
