@@ -35,7 +35,7 @@ public class FilialController {
 		model.addAttribute("filialobj", new filial());
 		Iterable<filial> filiais = filialrepository.findAll();
         model.addAttribute("filiais", filiais);
-		return "/paginas/gestaodefiliais";
+		return "paginas/gestaodefiliais";
 	}
 	
 	private String formatarNome(String username) {
