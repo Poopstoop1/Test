@@ -19,7 +19,7 @@ public class ConfiguracoesController {
 	           String nomeFormatado = formatarNome(username);
 	           model.addAttribute("message", nomeFormatado);
 	       }
-		return "/paginas/configuracoes";
+		return "paginas/configuracoes";
 	}
 	
 	private String formatarNome(String username) {
