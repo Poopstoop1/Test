@@ -36,7 +36,7 @@ public class UsuarioController {
 		}
 		 model.addAttribute("usuarios", userRepository.findAll());
 		model.addAttribute("usuarioobj", new Users());
-		return "/paginas/gestaodeusuarios";
+		return "paginas/gestaodeusuarios";
 	}
 
 	private String formatarNome(String username) {
