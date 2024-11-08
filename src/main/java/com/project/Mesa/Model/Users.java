@@ -79,10 +79,12 @@ public class Users implements Serializable, UserDetails {
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-	    String role = cargo.equalsIgnoreCase("Administrador") ? "ROLE_MANAGER" : "ROLE_USER";
-	    return Collections.singletonList(new SimpleGrantedAuthority(role));
-	}
+public Collection<? extends GrantedAuthority> getAuthorities() {
+    String role = cargo.equalsIgnoreCase("Administrador") || cargo.equalsIgnoreCase("Marketing") 
+                  ? "ROLE_MANAGER" 
+                  : "ROLE_USER";
+    return Collections.singletonList(new SimpleGrantedAuthority(role));
+}
 	
 	@Override
 	public String getUsername() {
