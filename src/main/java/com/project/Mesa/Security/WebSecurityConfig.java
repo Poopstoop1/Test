@@ -48,8 +48,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 		http.authorizeHttpRequests((authz) -> authz
 				// Rotas acessíveis apenas pelo admin
 				.requestMatchers("/login.css","/img/**","/js/**").permitAll()
-				.requestMatchers("/cadastrousuarios", "/salvarusuarios","/listarusuarios","/editarusuarios/{idusuario}",
-						"/filial","/upload","/usuarios").hasRole("MANAGER")
+				.requestMatchers( "/salvarusuarios","/listarusuarios","/editarusuarios/{idusuario}",
+						"/filial","/usuarios").hasRole("MANAGER")
 				
 				// Qualquer outra rota requer autenticação
 				.anyRequest().authenticated())

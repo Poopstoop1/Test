@@ -125,11 +125,12 @@ public class GoogleSheetsService {
                         }
             	        campanha.setNomeParticipante(row.get(5).toString());
             	        campanha.setMeta(row.get(6).toString());
-            	        campanha.setMeta_atingida(row.get(7).toString());
-            	        campanha.setPositivou(row.get(8).toString());
-            	        campanha.setFaixa_de_premiacao(row.size() > 9 ? row.get(9).toString() : null);
-            	        campanha.setValor_premiacao(row.size() > 10 ? row.get(10).toString() : null);
-                        campanha.setValor_com_taxa(row.size() > 11 ? row.get(11).toString() : null);
+            	        campanha.setRealizado(row.get(7).toString());
+            	        campanha.setMeta_atingida(row.get(8).toString());
+            	        campanha.setPositivou(row.get(9).toString());
+            	        campanha.setFaixa_de_premiacao(row.size() > 10 ? row.get(10).toString() : null);
+            	        campanha.setValor_premiacao(row.size() > 11 ? row.get(11).toString() : null);
+                        campanha.setValor_com_taxa(row.size() > 12 ? row.get(12).toString() : null);
                         campanha.setPaginas("Melhores Empresas");
                         
                         boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresa(

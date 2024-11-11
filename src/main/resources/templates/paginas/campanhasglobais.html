@@ -46,7 +46,191 @@
 
         <div class="upload-section">
             <h1 class="title-upload" th:text="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'Campanhas Globais' : 'Campanhas'}"></h1>
-            <p class="history-upload">Lista de Campanhas: </p>
+            <p class="last-upload">Lista de Campanhas: </p>
+
+            <button id="btnComidaPremiada" class="button_paginas" onclick="mostrarTabela('ComidaPremiada1')">Comida Premiada</button>
+            <button id="btnMelhoresEmpresas" class="button_paginas" onclick="mostrarTabela('MelhoresEmpresas1')">Melhores Empresas</button>
+            <button id="btnComeMelhor" class="button_paginas" onclick="mostrarTabela('ComeMelhor1')">Come Melhor</button>
+            <button id="btnDestaque" class="button_paginas" onclick="mostrarTabela('Destaque1')">Destaque</button>
+            <button id="btnDestaqueCorporativo" class="button_paginas" onclick="mostrarTabela('DestaqueCorporativo1')">Destaque Corporativo</button>
+
+            <table id="ComidaPremiada1" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Grupo</th>
+                        <th>Filial</th>
+                        <th>CNPJ</th>
+                        <th>Razão Social</th>
+                        <th>Categoria Participante</th>
+                        <th>Cargo Participante</th>
+                        <th>Nome Participante</th>
+                        <th>Meta</th>
+                        <th>Realizado</th>
+                        <th>Meta atingida?</th>
+                        <th>Valor Por Bateria</th>
+                        <th>Premiação</th>
+                        <th>Valor com taxa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="campanha : ${campanhas}">
+                        <td th:text="${campanha.periodo}"></td>
+                        <td th:text="${campanha.grupo}"></td>
+                        <td th:text="${campanha.empresa.nome}"></td>
+                        <td th:text="${campanha.empresa.cnpj}"></td>
+                        <td th:text="${campanha.empresa.razaosocial}"></td>
+                        <td th:text="${campanha.categoria_participante}"></td>
+                        <td th:text="${campanha.cargoParticipante}"></td>
+                        <td th:text="${campanha.nomeParticipante}"></td>
+                        <td th:text="${campanha.meta}"></td>
+                        <td th:text="${campanha.realizado}"></td>
+                        <td th:text="${campanha.meta_atingida}"></td>
+                        <td th:text="${campanha.valor_por_bateria}"></td>
+                        <td th:text="${campanha.valor_premiacao}"></td>
+                        <td th:text="${campanha.valor_com_taxa}"></td>
+
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <table id="MelhoresEmpresas1" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Grupo</th>
+                        <th>Filial</th>
+                        <th>CNPJ</th>
+                        <th>Razão Social</th>
+                        <th>Nome do Participante</th>
+                        <th>Meta</th>
+                        <th>Realizado</th>
+                        <th>Meta atingida?</th>
+                        <th>Positivou?</th>
+                        <th>Faixa de Premiação</th>
+                        <th>Premiação</th>
+                        <th>Valor com taxa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="campanha : ${campanhas1}">
+                        <td th:text="${campanha.periodo}"></td>
+                        <td th:text="${campanha.grupo}"></td>
+                        <td th:text="${campanha.empresa.nome}"></td>
+                        <td th:text="${campanha.empresa.cnpj}"></td>
+                        <td th:text="${campanha.empresa.razaosocial}"></td>
+                        <td th:text="${campanha.nomeParticipante}"></td>
+                        <td th:text="${campanha.meta}"></td>
+                        <td th:text="${campanha.realizado}"></td>
+                        <td th:text="${campanha.meta_atingida}"></td>
+                        <td th:text="${campanha.positivou}"></td>
+                        <td th:text="${campanha.faixa_de_premiacao}"></td>
+                        <td th:text="${campanha.valor_premiacao}"></td>
+                        <td th:text="${campanha.valor_com_taxa}"></td>
+
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <table id="ComeMelhor1" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Grupo</th>
+                        <th>Filial</th>
+                        <th>Cargo do Participante</th>
+                        <th>Nome do Participante</th>
+                        <th>Meta Volume</th>
+                        <th>Real Volume</th>
+                        <th>Meta Volume Atingida?</th>
+                        <th>Meta Positivação</th>
+                        <th>Real Positivação</th>
+                        <th>Meta Positivação atingida?</th>
+                        <th>Premiação</th>
+                        <th>Valor com taxa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="campanha : ${campanhas2}">
+                        <td th:text="${campanha.periodo}"></td>
+                        <td th:text="${campanha.grupo}"></td>
+                        <td th:text="${campanha.empresa.nome}"></td>
+                        <td th:text="${campanha.cargoParticipante}"></td>
+                        <td th:text="${campanha.nomeParticipante}"></td>
+                        <td th:text="${campanha.meta}"></td>
+                        <td th:text="${campanha.real_volume}"></td>
+                        <td th:text="${campanha.meta_atingida}"></td>
+                        <td th:text="${campanha.meta_positivacao}"></td>
+                        <td th:text="${campanha.real_positivacao}"></td>
+                        <td th:text="${campanha.meta_positivacao_atingida}"></td>
+                        <td th:text="${campanha.valor_premiacao}"></td>
+                        <td th:text="${campanha.valor_com_taxa}"></td>
+
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+
+            <table id="Destaque1" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Grupo</th>
+                        <th>Filial</th>
+                        <th>Categoria do Participante</th>
+                        <th>Nome do Participante</th>
+                        <th>Premiação</th>
+                        <th>Valor com taxa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="campanha : ${campanhas3}">
+                        <td th:text="${campanha.periodo}"></td>
+                        <td th:text="${campanha.grupo}"></td>
+                        <td th:text="${campanha.empresa.nome}"></td>
+                        <td th:text="${campanha.cargoParticipante}"></td>
+                        <td th:text="${campanha.nomeParticipante}"></td>
+                        <td th:text="${campanha.valor_premiacao}"></td>
+                        <td th:text="${campanha.valor_com_taxa}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table id="DestaqueCorporativo1" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Grupo</th>
+                        <th>Filial</th>
+                        <th>Categoria do Participante</th>
+                        <th>Colocação</th>
+                        <th>Nome do Participante</th>
+                        <th>Premiação</th>
+                        <th>Valor com taxa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="campanha : ${campanhas4}">
+                        <td th:text="${campanha.periodo}"></td>
+                        <td th:text="${campanha.grupo}"></td>
+                        <td th:text="${campanha.empresa.nome}"></td>
+                        <td th:text="${campanha.cargoParticipante}"></td>
+                        <td th:text="${campanha.colocacao}"></td>
+                        <td th:text="${campanha.nomeParticipante}"></td>
+                        <td th:text="${campanha.valor_premiacao}"></td>
+                        <td th:text="${campanha.valor_com_taxa}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

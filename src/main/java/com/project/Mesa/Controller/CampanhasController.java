@@ -1,5 +1,7 @@
 package com.project.Mesa.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,12 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.Mesa.Model.Users;
+import com.project.Mesa.Model.campanhas;
 import com.project.Mesa.Repository.CampanhasRepository;
 import com.project.Mesa.Repository.UserRepository;
 
 @Controller
 public class CampanhasController {
 
+	
+	@Autowired
+	private CampanhasRepository campanhasRepository;
+	
   	@Autowired
   	private UserRepository userRepository;
   	
@@ -33,8 +40,60 @@ public class CampanhasController {
            model.addAttribute("message", nomeFormatado);
        }
        
+       if (auth.getAuthorities().stream()
+               .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_MANAGER"))) {
+           List<campanhas> campanhasComidaPremiada = campanhasRepository.findCampanhasByPaginaComidaPremiada();
+           model.addAttribute("campanhas", campanhasComidaPremiada);
+           
+           List<campanhas> campanhasMelhoresEmpresas = campanhasRepository.findCampanhasByPaginaMelhoresEmpresas();
+           model.addAttribute("campanhas1", campanhasMelhoresEmpresas);
+           
+           List<campanhas> campanhasComeMelhor = campanhasRepository.findCampanhasByPaginaComeMelhor();
+           model.addAttribute("campanhas2", campanhasComeMelhor);
+           
+           List<campanhas> campanhasDestaque = campanhasRepository.findCampanhasByPaginaDestaque();
+           model.addAttribute("campanhas3", campanhasDestaque);
+           
+           List<campanhas> campanhasDestaqueCorporativo = campanhasRepository.findCampanhasByPaginaDestaqueCorporativo();
+           model.addAttribute("campanhas4", campanhasDestaqueCorporativo);
+           
+       }else {
+    	   if(usua.getLogin().equals("CarlaFerreira")) {
+    		   List<campanhas> campanhasComidaPremiada = campanhasRepository.findCampanhasByPaginaComidaPremiadaAndCnpjAndEssencia(usua.getCnpjEmpresa());
+               model.addAttribute("campanhas", campanhasComidaPremiada);
+        	     
+               List<campanhas> campanhasMelhoresEmpresas = campanhasRepository.findCampanhasByPaginaMelhoresEmpresasAndCnpjAndEssencia(usua.getCnpjEmpresa());
+               model.addAttribute("campanhas1", campanhasMelhoresEmpresas);
+               
+               List<campanhas> campanhasComeMelhor = campanhasRepository.findCampanhasByPaginaComeMelhorAndCnpjAndEssencia(usua.getCnpjEmpresa());
+               model.addAttribute("campanhas2", campanhasComeMelhor);
+               
+               List<campanhas> campanhasDestaque = campanhasRepository.findCampanhasByPaginaDestaqueAndCnpjAndEssencia(usua.getCnpjEmpresa());
+               model.addAttribute("campanhas3", campanhasDestaque);
+               
+    		   List<campanhas> campanhasDestaqueCorporativo = campanhasRepository.findCampanhasByPaginaDestaqueCorporativoAndCnpjAndEssencia(usua.getCnpjEmpresa());
+               model.addAttribute("campanhas4", campanhasDestaqueCorporativo);
+              
+    	   }else {
+    	   List<campanhas> campanhasComidaPremiada = campanhasRepository.findCampanhasByPaginaComidaPremiadaAndCnpj(usua.getCnpjEmpresa());
+           model.addAttribute("campanhas", campanhasComidaPremiada);
+    	     
+           List<campanhas> campanhasMelhoresEmpresas = campanhasRepository.findCampanhasByPaginaMelhoresEmpresasAndCnpj(usua.getCnpjEmpresa());
+           model.addAttribute("campanhas1", campanhasMelhoresEmpresas);
+           
+           List<campanhas> campanhasComeMelhor = campanhasRepository.findCampanhasByPaginaComeMelhorAndCnpj(usua.getCnpjEmpresa());
+           model.addAttribute("campanhas2", campanhasComeMelhor);
+           
+           List<campanhas> campanhasDestaque = campanhasRepository.findCampanhasByPaginaDestaqueAndCnpj(usua.getCnpjEmpresa());
+           model.addAttribute("campanhas3", campanhasDestaque);
+           
+           List<campanhas> campanhasDestaqueCorporativo = campanhasRepository.findCampanhasByPaginaDestaqueCorporativoAndCnpj(usua.getCnpjEmpresa());
+           model.addAttribute("campanhas4", campanhasDestaqueCorporativo);
+    	   }
+       }
 
-       return "paginas/campanhasglobais";
+
+       return "/paginas/campanhasglobais";
    }
 
     private String formatarNome(String username) {
