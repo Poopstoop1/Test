@@ -54,3 +54,12 @@ if (window.innerWidth < 800) {
   sidebar.classList.remove("locked");
   sidebar.classList.remove("hoverable");
 }
+
+ function mostrarTabela(tabelaId) {
+            // Oculta todas as tabelas
+            const tabelas = document.querySelectorAll('table[id$="1"]');
+            tabelas.forEach(tabela => tabela.style.display = 'none');
+            
+            // Mostra apenas a tabela escolhida
+            document.getElementById(tabelaId).style.display = 'table';
+        }
