@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 @Repository
 @Transactional
 public interface CampanhasRepository extends CrudRepository<campanhas, Long>{
-	boolean existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresa(String periodo, String grupo,String cargoParticipante,String nomeParticipante, filial empresa);
+	boolean existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresaAndPaginas(String periodo, String grupo,String cargoParticipante,String nomeParticipante, filial empresa,String paginas);
         /*Query para central*/	
 		@Query("SELECT c FROM campanhas c JOIN c.empresa f WHERE c.paginas = 'Comida Premiada'")
 	    List<campanhas> findCampanhasByPaginaComidaPremiada();
