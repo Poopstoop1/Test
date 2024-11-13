@@ -87,12 +87,13 @@ public class GoogleSheetsService {
                         
                         
                      // Verificar se a campanha já existe no banco de dados
-                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresa(
+                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresaAndPaginas(
                                 campanha.getPeriodo(), 
                                 campanha.getGrupo(), 
                                 campanha.getCargoParticipante(),
                                 campanha.getNomeParticipante(), 
-                                campanha.getEmpresa()
+                                campanha.getEmpresa(),
+                                campanha.getPaginas()
                             );
 
                         if (exists) {
@@ -133,12 +134,13 @@ public class GoogleSheetsService {
                         campanha.setValor_com_taxa(row.size() > 12 ? row.get(12).toString() : null);
                         campanha.setPaginas("Melhores Empresas");
                         
-                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresa(
+                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresaAndPaginas(
                                 campanha.getPeriodo(), 
                                 campanha.getGrupo(), 
                                 campanha.getCargoParticipante(),
                                 campanha.getNomeParticipante(), 
-                                campanha.getEmpresa()
+                                campanha.getEmpresa(),
+                                campanha.getPaginas()
                             );
 
                             if (exists) {
@@ -179,12 +181,13 @@ public class GoogleSheetsService {
                         campanha.setPaginas("Come Melhor");
                         
 
-                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresa(
+                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresaAndPaginas(
                                 campanha.getPeriodo(), 
                                 campanha.getGrupo(), 
                                 campanha.getCargoParticipante(),
                                 campanha.getNomeParticipante(), 
-                                campanha.getEmpresa()
+                                campanha.getEmpresa(),
+                                campanha.getPaginas()
                             );
 
                             if (exists) {
@@ -215,12 +218,13 @@ public class GoogleSheetsService {
                         campanha.setValor_premiacao(row.size() > 5 ? row.get(5).toString() : null);
                         campanha.setValor_com_taxa(row.size() > 6 ? row.get(6).toString() : null);
                         campanha.setPaginas("Destaque");
-                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresa(
+                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresaAndPaginas(
                                 campanha.getPeriodo(), 
                                 campanha.getGrupo(), 
                                 campanha.getCargoParticipante(),
                                 campanha.getNomeParticipante(), 
-                                campanha.getEmpresa()
+                                campanha.getEmpresa(),
+                                campanha.getPaginas()
                             );
 
                             if (exists) {
@@ -252,12 +256,13 @@ public class GoogleSheetsService {
                         campanha.setValor_com_taxa(row.size() > 7 ? row.get(7).toString() : null);
                         campanha.setPaginas("Destaque Corporativo");
                         
-                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresa(
+                        boolean exists = campanhasRepository.existsByPeriodoAndGrupoAndCargoParticipanteAndNomeParticipanteAndEmpresaAndPaginas(
                                 campanha.getPeriodo(), 
                                 campanha.getGrupo(), 
                                 campanha.getCargoParticipante(),
                                 campanha.getNomeParticipante(), 
-                                campanha.getEmpresa()
+                                campanha.getEmpresa(),
+                                campanha.getPaginas()
                             );
 
                             if (exists) {
