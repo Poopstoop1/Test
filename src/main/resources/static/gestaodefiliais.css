@@ -280,7 +280,6 @@ body {
   font-size: 14px;
 }
 
-
 .popup-content form input[type="submit"] {
   background-color: #241f4a;
   color: white;
@@ -331,7 +330,8 @@ table td a:hover {
 }
 
 table th {
-  background-color: #241f4a; /* Cor de destaque para o cabeçalho */
+  background-color: #1a1636; /* Cor de destaque para o cabeçalho */
+  color: #ffd700; /* Cor de destaque para o cabeçalho */
 }
 
 table tr:nth-child(even) {
@@ -343,26 +343,26 @@ a {
 }
 
 .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .popup-content {
-    padding: 20px;
-    background: white;
-    width: 400px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  background: white;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
 }
