@@ -39,13 +39,149 @@
         </div>
     </nav>
     <div class="main">
-        <div class="dashboard-section">
+        <div class="dashboard-section" th:classappend="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'Dashboard Global' : 'Dashboard'}">
             <h1 class="title-dashboard">Dashboard</h1>
-            <p class="graphic">Gráfico geral:</p>
 
-            <div style="width:400px; height:200px;">
-                <canvas id="performanceChart"></canvas>
+            <div class="campaign-graphs">
+                <div class="label-container">
+                    <label id="comidaPreferidaLabel">Comida Preferida:</label>
+                </div>
+                <div class="graphs-container">
+                    <div class="graph-item" style="height: 300px; width: 450px;">
+                        <table id="comidasPremiadas" style="border-radius: 10px; display: none;">
+                            <thead>
+                                <tr>
+                                    <th>Participantes</th>
+                                    <th>Meta</th>
+                                    <th>Realizada</th>
+                                    <th>Premiação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="comidaPreferida : ${campanhas}">
+                                    <td th:text="${comidaPreferida.nomeParticipante}"></td>
+                                    <td th:text="${comidaPreferida.meta}"></td>
+                                    <td th:text="${comidaPreferida.realizado}"></td>
+                                    <td th:text="${comidaPreferida.valor_premiacao}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <canvas id="comidaPreferida_bar"></canvas>
+                    </div>
+                    <div class="graph-item" style="height: 300px; width: 450px;">
+                        <canvas id="comidaPreferida_Bolhas"></canvas>
+                    </div>
+                </div>
+            </div>
 
+            <div class="graph-better" style="height: 350px; width: 450px;">
+                <label name="Come Melhor">Come Melhor</label>
+                <canvas id="comeMelhorBar"></canvas>
+                <table id="comeMelhorDados" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Participante</th>
+                            <th>Meta</th>
+                            <th>Meta Realizada</th>
+                            <th>Meta positivada</th>
+                            <th>Real positivada</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="comeMelhor : ${campanhas2}">
+                            <td th:text="${comeMelhor.nomeParticipante}"></td>
+                            <td th:text="${comeMelhor.meta}"></td>
+                            <td th:text="${comeMelhor.real_volume}"></td>
+                            <td th:text="${comeMelhor.meta_positivacao}"></td>
+                            <td th:text="${comeMelhor.real_positivacao}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="graph-destaque" style="height: 300px; width: 450px;">
+                <label name="Destaque">Destaque</label>
+                <canvas id="destaque"></canvas>
+                <table id="destaqueDados" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Participante</th>
+                            <th>Premiação</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="destaque : ${campanhas3}">
+                            <td th:text="${destaque.nomeParticipante}"></td>
+                            <td th:text="${destaque.valor_premiacao}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Gráfico de Melhores Empresas ao lado da Tabela -->
+            <div class="graph-and-table-right">
+                <div class="graph-item1" style="height: 300px; width: 350px;">
+                    <label>Melhores Empresas</label><br>
+                    <canvas id="melhoresEmpresas_bar"></canvas>
+                </div>
+                <div class="ranking-section">
+                    <table id="melhoresEmpresa1">
+                        <thead>
+                            <tr>
+                                <th>Empresa</th>
+                                <th>Participante</th>
+                                <th>Meta Realizada</th>
+                                <th>Premiação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="melhoresEmpresa : ${campanhas1}">
+                                <td th:text="${melhoresEmpresa.empresa.nome}"></td>
+                                <td th:text="${melhoresEmpresa.nomeParticipante}"></td>
+                                <td th:text="${melhoresEmpresa.meta_atingida}"></td>
+                                <td th:text="${melhoresEmpresa.valor_com_taxa}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table id="melhoresEmpresaDados" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Participante</th>
+                                <th>Meta</th>
+                                <th>Meta Realizada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="melhoresEmpresa : ${campanhas1}">
+                                <td th:text="${melhoresEmpresa.nomeParticipante}"></td>
+                                <td th:text="${melhoresEmpresa.meta}"></td>
+                                <td th:text="${melhoresEmpresa.meta_atingida}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="destaqueConteiner">
+                <label class="destaqueLabel">Destaque Corporativo</label>
+                <table class="destaqueCorporativoTable">
+                    <thead>
+                        <tr>
+                            <th>Colocação</th>
+                            <th>Filial</th>
+                            <th>Nome do participante</th>
+                            <th>Valor da premiação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="destaqueCorporativo : ${campanhas4}">
+                            <td th:text="${destaqueCorporativo.colocacao}"></td>
+                            <td th:text="${destaqueCorporativo.empresa.nome}"></td>
+                            <td th:text="${destaqueCorporativo.nomeParticipante}"></td>
+                            <td th:text="${destaqueCorporativo.valor_premiacao}"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

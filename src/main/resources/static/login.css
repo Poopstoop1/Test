@@ -114,3 +114,7 @@ body {
 .forgot-password:hover {
   text-decoration: underline;
 }
+
+.error-message {
+  color: #c21712;
+}

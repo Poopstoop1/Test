@@ -254,7 +254,8 @@ table td a:hover {
 }
 
 table th {
-  background-color: #241f4a; /* Cor de destaque para o cabeçalho */
+  background-color: #1a1636; /* Cor de destaque para o cabeçalho */
+  color: #ffd700; /* Cor de destaque para o cabeçalho */
 }
 
 table tr:nth-child(even) {

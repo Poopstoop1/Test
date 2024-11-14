@@ -32,7 +32,6 @@
                 <li class="item"><a href="https://test-project-7296.up.railway.app/campanhas"><span class="material-symbols-outlined">campaign</span><span th:text="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'Gestão de Campanhas' : 'Campanhas'}">Gestão de Campanhas</span></a></li>
                 <li class="item" th:if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}"><a href="https://test-project-7296.up.railway.app/usuarios"><span class="material-symbols-outlined">groups</span><span>Gestão de Usuários</span></a></li>
                 <li class="item" th:if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}"><a href="https://test-project-7296.up.railway.app/filial"><span class="material-symbols-outlined">library_add</span><span>Gestão de Filiais</span></a></li>
-                <li class="item"><a href="https://test-project-7296.up.railway.app/configuracoes"><span class="material-symbols-outlined">settings</span><span th:text="${#authorization.expression('hasRole(''ROLE_MANAGER'')') ? 'Configurações Gerais' : 'Configurações'}">Configurações</span></a></li>
                 <li class="item"><a href="https://test-project-7296.up.railway.app/logout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
             </ul>
         </div>

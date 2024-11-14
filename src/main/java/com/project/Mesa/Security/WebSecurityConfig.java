@@ -56,6 +56,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 				// Usa o form da pagina tela.html do Spring Security
 				.formLogin((form) -> form
 						.loginPage("/login")
+						.failureUrl("/login?error=true")
 						.defaultSuccessUrl("/", true) 
 						.permitAll())
 				 .logout(logout -> logout.logoutUrl("/logout")
