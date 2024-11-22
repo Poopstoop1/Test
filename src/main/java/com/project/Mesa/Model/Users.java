@@ -1,6 +1,5 @@
 package com.project.Mesa.Model;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -17,12 +16,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
-public class Users implements Serializable, UserDetails {
+public class Users implements UserDetails {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")

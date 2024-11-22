@@ -8,11 +8,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.project.Mesa.Model.Users;
 import com.project.Mesa.Model.campanhas;
 import com.project.Mesa.Repository.CampanhasRepository;
 import com.project.Mesa.Repository.UserRepository;
+import com.project.Mesa.Service.GoogleSheetsService;
 
 @Controller
 public class CampanhasController {
@@ -23,6 +26,9 @@ public class CampanhasController {
 	
   	@Autowired
   	private UserRepository userRepository;
+  	
+  	@Autowired
+  	private GoogleSheetsService googleSheetsService;
   	
 	
 	
@@ -93,7 +99,7 @@ public class CampanhasController {
        }
 
 
-       return "paginas/campanhasglobais";
+       return "/paginas/campanhasglobais";
    }
 
     private String formatarNome(String username) {
@@ -101,4 +107,17 @@ public class CampanhasController {
         // Exemplo: "ErysonMoreira" -> "Eryson Moreira"
         return username.replaceAll("([a-z])([A-Z])", "$1 $2");
     }
+    
+    @RequestMapping(method = RequestMethod.GET,value = "/update-sheets")
+    public ModelAndView updateGoogleSheets(){
+    	ModelAndView modelview = new ModelAndView("redirect:/campanhas");
+    	try {
+            googleSheetsService.loadDataFromGoogleSheets();
+            System.out.println("Dados atualizados com sucesso!"); 
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar dados: " + e.getMessage()); 
+        }
+    	return modelview;
+    }
+     
 }

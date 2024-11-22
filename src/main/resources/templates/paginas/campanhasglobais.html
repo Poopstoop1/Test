@@ -52,6 +52,8 @@
             <button id="btnComeMelhor" class="button_paginas" onclick="mostrarTabela('ComeMelhor1')">Come Melhor</button>
             <button id="btnDestaque" class="button_paginas" onclick="mostrarTabela('Destaque1')">Destaque</button>
             <button id="btnDestaqueCorporativo" class="button_paginas" onclick="mostrarTabela('DestaqueCorporativo1')">Destaque Corporativo</button>
+            <a id="btnAtualizar" th:href="@{/update-sheets}" th:if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}">Atualizar</a>
+
 
             <table id="ComidaPremiada1" style="display:none">
                 <thead>
