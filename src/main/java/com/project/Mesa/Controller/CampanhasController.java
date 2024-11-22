@@ -99,7 +99,7 @@ public class CampanhasController {
        }
 
 
-       return "/paginas/campanhasglobais";
+       return "paginas/campanhasglobais";
    }
 
     private String formatarNome(String username) {
