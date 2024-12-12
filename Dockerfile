@@ -2,6 +2,7 @@ FROM openjdk:21-jdk-slim
 
 # Instale o Maven
 RUN apt-get update && apt-get install -y maven
+RUN mvn -v
 
 # Defina o diretório de trabalho dentro do container
 WORKDIR /app
@@ -10,7 +11,8 @@ WORKDIR /app
 COPY . /app
 
 # Compile o projeto com Maven
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -X
+RUN ls -l target/
 
 # Copie o arquivo jar gerado para o container
 # Note que você pode usar a instrução RUN para executar um comando que move o jar diretamente
